@@ -6,14 +6,15 @@ import { convertToSerializableObject } from "@/utils/convertToObject";
 import React from "react";
 
 interface EditPropertyPageProps {
-	params: {
+	params: Promise<{
 		id: string;
-	};
+	}>;
 }
 
 const EditPropertyPage = async ({ params }: EditPropertyPageProps) => {
 	connectDB();
-	const propertyDoc = await Property.findById(params.id).lean<IProperty>();
+	const { id } = await params;
+	const propertyDoc = await Property.findById(id).lean<IProperty>();
 	const property = convertToSerializableObject(propertyDoc);
 
 	if (!property) {
