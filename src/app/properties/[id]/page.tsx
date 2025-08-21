@@ -12,7 +12,13 @@ import BookmarkButton from "@/components/BookmarkButton";
 import ShareButtons from "@/components/ShareButtons";
 import PropertyContactForm from "@/components/PropertyContactForm";
 
-const PropertyPage: React.FC<any> = async ({ params }) => {
+type Props = {
+	params: Promise<{
+		id: string;
+	}>;
+};
+
+const PropertyPage: React.FC<Props> = async ({ params }) => {
 	const { id } = await params;
 	connectDB();
 	const propertyDoc = await PropertyModel.findById(id).lean<IProperty>();

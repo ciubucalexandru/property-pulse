@@ -22,6 +22,7 @@ const SearchResultsPage: React.FC<SearchResultsPageProps> = async ({
 	const { location, propertyType } = await searchParams;
 
 	const locationRegex = new RegExp(location, "i");
+	/* eslint-disable  @typescript-eslint/no-explicit-any */
 	const query: any = {
 		$or: [
 			{ name: locationRegex },

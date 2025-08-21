@@ -10,6 +10,7 @@ export const getSessionUser = async () => {
 
 	return {
 		user: session.user,
+		/* eslint-disable  @typescript-eslint/no-explicit-any */
 		userId: (session.user as any).id,
 	};
 };

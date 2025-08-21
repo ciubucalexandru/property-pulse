@@ -14,6 +14,7 @@ type Props = {
 const PropertyContactForm: React.FC<Props> = ({ property }) => {
 	const { data: session } = useSession();
 
+	/* eslint-disable  @typescript-eslint/no-explicit-any */
 	const [state, formAction] = useActionState(addMessage as any, {
 		submitted: false,
 		erorr: null,

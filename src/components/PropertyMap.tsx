@@ -26,15 +26,11 @@ const PropertyMap: React.FC<Props> = ({ property }) => {
 		outputFormat: OutputFormat.JSON,
 	});
 
-	if (!property) {
-		return <div className="text-xl">No location data found</div>;
-	}
-
 	useEffect(() => {
 		const fetchCoords = async () => {
 			try {
 				const res = await fromAddress(
-					`${property.location?.street} ${property.location?.city} ${property.location?.state} ${property.location?.zipcode}`
+					`${property?.location?.street} ${property?.location?.city} ${property?.location?.state} ${property?.location?.zipcode}`
 				);
 
 				if (res.results.length === 0) {
@@ -55,6 +51,10 @@ const PropertyMap: React.FC<Props> = ({ property }) => {
 
 		fetchCoords();
 	}, []);
+
+	if (!property) {
+		return <div className="text-xl">No location data found</div>;
+	}
 
 	if (loading) {
 		return <Spinner />;

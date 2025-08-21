@@ -1,4 +1,5 @@
 export const convertToSerializableObject = (
+	/* eslint-disable  @typescript-eslint/no-explicit-any */
 	leanDocument: Record<string, any> | null
 ) => {
 	if (!leanDocument) {

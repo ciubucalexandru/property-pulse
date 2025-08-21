@@ -27,6 +27,7 @@ export const authOptions: AuthOptions = {
 				await User.create({
 					email: profile?.email,
 					username,
+					/* eslint-disable  @typescript-eslint/no-explicit-any */
 					image: (profile as any).picture,
 				});
 			}
@@ -37,6 +38,7 @@ export const authOptions: AuthOptions = {
 			if (session?.user) {
 				const user = await User.findOne({ email: session.user?.email });
 
+				/* eslint-disable  @typescript-eslint/no-explicit-any */
 				(session.user as any).id = user?._id.toString();
 			}
 

@@ -14,6 +14,7 @@ type Props = {
 
 const BookmarkButton: React.FC<Props> = ({ property }) => {
 	const { data: session } = useSession();
+	/* eslint-disable  @typescript-eslint/no-explicit-any */
 	const userId = (session?.user as any)?.id;
 	const [isBookmarked, setIsBookmarked] = useState(false);
 
@@ -21,7 +22,9 @@ const BookmarkButton: React.FC<Props> = ({ property }) => {
 		if (!userId) return;
 
 		checkBookmarkStatus(property._id?.toString() || "").then((res) => {
+			/* eslint-disable  @typescript-eslint/no-explicit-any */
 			if ((res as any).error) {
+				/* eslint-disable  @typescript-eslint/no-explicit-any */
 				toast.error((res as any).error);
 				return;
 			}
@@ -37,6 +40,7 @@ const BookmarkButton: React.FC<Props> = ({ property }) => {
 		}
 
 		bookmarkProperty(property._id?.toString() || "").then((response) => {
+			/* eslint-disable  @typescript-eslint/no-explicit-any */
 			if (!(response as any).error) {
 				toast.success(response.message);
 				setIsBookmarked(response.isBookmarked);

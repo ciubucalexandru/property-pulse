@@ -15,7 +15,7 @@ const checkBookmarkStatus = async (propertyId: string) => {
 	const { userId } = sessionUser;
 
 	const user = await User.findById(userId);
-	let isBookmarked = user.bookmarks.includes(propertyId);
+	const isBookmarked = user.bookmarks.includes(propertyId);
 
 	return {
 		isBookmarked,
